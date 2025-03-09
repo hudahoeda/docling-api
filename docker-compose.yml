@@ -33,7 +33,7 @@ services:
       - OMP_NUM_THREADS=2
       - PYTHONMALLOC=malloc
     ports:
-      - "8080:8080"
+      - "${MARKER_API_CPU_PORT}:8080"
     volumes:
       - .:/app
       - model_cache:/tmp
@@ -45,7 +45,7 @@ services:
     container_name: redis
     image: redis:7.2.4-alpine
     ports:
-      - "6379:6379"
+      - "${REDIS_PORT}:6379"
 
   flower:
     container_name: flower_cpu
@@ -56,7 +56,7 @@ services:
     image: converter-cpu-image
     command: poetry run celery -A worker.celery_config flower --port=5555
     ports:
-      - "5556:5555"
+      - "${DASHBOARD_PORT}:5555"
     volumes:
       - .:/app
       - model_cache:/tmp
