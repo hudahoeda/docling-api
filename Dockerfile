@@ -31,9 +31,9 @@ ENV HF_HOME=/tmp/ \
 RUN python -c 'from docling.pipeline.standard_pdf_pipeline import StandardPdfPipeline; artifacts_path = StandardPdfPipeline.download_models_hf(force=True);'
 
 # Pre-download EasyOCR models in compatible groups
-RUN python -c 'import easyocr; \
-    reader = easyocr.Reader(["fr", "de", "es", "en", "it", "pt"], gpu=True); \
-    print("EasyOCR models downloaded successfully")'
+#RUN python -c 'import easyocr; \
+#    reader = easyocr.Reader(["fr", "de", "es", "en", "it", "pt"], gpu=True); \
+#    print("EasyOCR models downloaded successfully")'
 
 COPY . .
 
